@@ -1,0 +1,24 @@
+name: Testing Python Code
+
+# events
+on: [push]
+
+jobs:
+
+    # name of job
+    test:
+        name: Run Python test
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+            
+            - name: Setup Python 
+              uses: actions/setup-python@v2
+              with:
+                python-version: 3.11
+            
+            - name: Run Tests
+              run: |
+                python tests/test_app.py
